@@ -1,6 +1,10 @@
 from fastapi import FastAPI,Header
 from typing import Optional
 from pydantic import BaseModel
+#uvicorn Basics.main:app --reload to run app on default port 8000 
+#fastapi dev for single app to run on 8000 port
+# add --port 8001 for a different port i.e 8001
+#uvicorn Basics.basics:app --reload --port 8000   (if file is basics.py)
 app = FastAPI()
 # basic get request returning a text
 # http://127.0.0.1:8000/
@@ -73,3 +77,10 @@ async def get_headers(
   They contain important information about the request/response, 
  the client, and how the data should be handled.'''
 # here header is extracted from http request and returned as json response
+
+'''
+__init__.py make the Basics folder into
+a package from which modules can be imported
+'''
+#netstat -ano | findstr :8000 to check if app running on that port
+#taskkill /PID 24392 /F add port id to kill it 
