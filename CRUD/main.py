@@ -48,7 +48,10 @@ async def update_product(product_id:int,product_update_data:ProductUpdateModel)-
       product['price'] = product_update_data.price
       return product
   raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"Product Not Found OF ID:{product_id}")
-@app.get('/products/{product_id}')
+@app.delete('/products/{product_id}',status_code=status.HTTP_204_NO_CONTENT)
 async def delete_product(product_id:int):
-  pass
-
+  for product in products:
+    if product['id']==product_id:
+      products.remove(product)
+      return None # or {}
+  raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"Product Not Found OF ID:{product_id}")
