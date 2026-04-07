@@ -12,9 +12,9 @@ async def life_span(app:FastAPI):
     yield
     print(f"server has been stoped") # at end executes
     
-version = "v1"
+version = "v2"
 app = FastAPI(version=version,
-              title="Modular Product Crud",
+              title="An Async Product CRUD with PostgreSQL integration w.t.h of SQLModel",
               description="A RestAPI for product web service",
               lifespan=life_span)
 
